@@ -6,7 +6,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  color: white;
 }
 
 .container {
@@ -19,22 +18,27 @@ body {
 .container h1 {
   font-size: 100px;
   padding-bottom: 20px;
+  color: white;
 }
 
-.counter-buttons {
+.searchBox {
   display: flex;
-  justify-content:space-between;
-  gap: 20px;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
-.counter-buttons button {
+.searchBox input {
+  height: 50px;
+  width: 50%;
   font-size: 20px;
-  padding: 20px;
-  border-radius: 50px;
+  font-weight:600;
 }
 
-@media (max-width: 1000px ) {
-  body {
-    background-color: grey;
-  }
+.searchBox button {
+  height: 50px;
+  width: 10%;
+  font-size: 20px;
+  font-weight: 700;
 }

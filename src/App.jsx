@@ -1,32 +1,31 @@
 import { useState } from "react";
 import "./App.css";
-
+import MealInfo from "./components/MealInfo";
+import MealMenu from "./components/MealMenu";
 function App() {
-  const [count, setCount] = useState(0);
+  const [mealQuery, setMealQuery] = useState("");
 
-  const increaseCount = () => {
-    setCount(count + 1);
-  };
+  const [searchMeal, setSearchMeal] = useState("");
 
-  const decreaseCount = () => {
-    if (count != 0) {
-      setCount(count -1);
-    }
-  };
-
-  const resetCount = () => {
-    setCount(0);
+  const triggerSearchMeal = () => {
+    setSearchMeal(mealQuery);
   };
 
   return (
     <>
+      <div className="searchBox">
+        <input
+          type="search"
+          placeholder="apple pie"
+          value={mealQuery}
+          onChange={(e) => setMealQuery(e.target.value)}
+        />
+        <button onClick={triggerSearchMeal}>Search</button>
+      </div>
+
       <div className="container">
-        <h1>{count}</h1>
-        <div className="counter-buttons">
-          <button onClick={increaseCount}>increae the count</button>
-          <button onClick={resetCount}>Reset</button>
-          <button onClick={decreaseCount}>decreae the count</button>
-        </div>
+        {/* <MealInfo info="apple pie" /> */}
+        <MealMenu mealName={searchMeal} />
       </div>
     </>
   );
