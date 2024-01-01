@@ -1,33 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import MealInfo from "./components/MealInfo";
 import MealMenu from "./components/MealMenu";
+import axios from "axios";
+
 function App() {
-  const [mealQuery, setMealQuery] = useState("");
+  const [query, setQuery] = useState("apple");
 
-  const [searchMeal, setSearchMeal] = useState("");
+  const [result, setResult] = useState([]);
 
-  const triggerSearchMeal = () => {
-    setSearchMeal(mealQuery);
-  };
+  useEffect(() => {
+    const searchMeal = async () => {
+      try {
+        const response = await axios.get(
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+        );
+        setResult(response.data.meals);
+      } catch (error) {
+        console.error("Error while fetching data: ", error);
+      }
+    };
+    console.log(result);
+    searchMeal();
+  }, [query]);
 
   return (
-    <>
-      <div className="searchBox">
+    <div>
+      <h1>Working</h1>
+      <div>
         <input
-          type="search"
-          placeholder="apple pie"
-          value={mealQuery}
-          onChange={(e) => setMealQuery(e.target.value)}
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
-        <button onClick={triggerSearchMeal}>Search</button>
+        {/* <button onClick={searchMeal}>Search Meal</button> */}
       </div>
-
-      <div className="container">
-        {/* <MealInfo info="apple pie" /> */}
-        <MealMenu mealName={searchMeal} />
-      </div>
-    </>
+      <MealInfo meals={result} />
+    </div>
   );
 }
 

@@ -1,13 +1,15 @@
 body {
   background-color: black;
+  color: wheat;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  place-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
 
+/*
 .container {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,6 @@ body {
 
 .searchBox {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   gap: 50px;
@@ -41,4 +42,4 @@ body {
   width: 10%;
   font-size: 20px;
   font-weight: 700;
-}
+} */
