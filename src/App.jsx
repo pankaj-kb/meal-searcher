@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MealMenu from "./components/MealMenu";
-import MealInfo from "./components/MealInfo";
+import MealInfo from "./components/MealInfo"
 import axios from "axios";
 
 function App() {
@@ -44,10 +44,18 @@ function App() {
     setSelectedMeal(meal);
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
+
   // TODO: style the app.
   return (
     <div>
-      <h1>Meal Searcher</h1>
+      <nav onClick={handleRefresh}>
+        <img src="/mealLogo.png" alt="logo" />
+        <h1>Meal Searcher</h1>
+      </nav>
       <div className="searchBar">
         <input
           type="text"
@@ -57,11 +65,14 @@ function App() {
         />
         {/* <button onClick={searchMeal}>Search Meal</button> */}
       </div>
+
+      {/* section for Meal menu */}
+
       <div>
         {selectedMeal ? (
           <div>
-            <MealInfo selectedMeal={selectedMeal} />
             <button onClick={() => setSelectedMeal(null)}>Close</button>
+            <MealInfo selectedMeal={selectedMeal} />
           </div>
         ) : (
           <div>

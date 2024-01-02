@@ -3,12 +3,12 @@ import React from "react";
 const MealMenu = ({ meals, onMealClick }) => {
   // const sliceMeals = meals.slice(0, 9);
   return (
-    <div>
+    <div className="mealGallary">
       {meals && meals.length > 0 ? (
         meals.slice(0, 9).map((meal) => (
-          <div key={meal.idMeal} onClick={() => onMealClick(meal)}>
-            <h3>{meal.strMeal}</h3>
+          <div className="mealTile" key={meal.idMeal} onClick={() => onMealClick(meal)}>
             <img src={meal.strMealThumb} alt={meal.strMeal} />
+            <h3>{meal.strMeal}</h3>
           </div>
         ))
       ) : (
