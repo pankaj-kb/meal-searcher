@@ -44,13 +44,14 @@ function App() {
     setSelectedMeal(meal);
   };
 
-  // style the app.
+  // TODO: style the app.
   return (
     <div>
       <h1>Meal Searcher</h1>
-      <div>
+      <div className="searchBar">
         <input
           type="text"
+          placeholder="find your meal"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

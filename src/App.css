@@ -9,37 +9,19 @@ body {
   min-height: 100vh;
 }
 
-/*
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container h1 {
-  font-size: 100px;
-  padding-bottom: 20px;
-  color: white;
-}
-
-.searchBox {
+.searchBar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
 }
 
-.searchBox input {
-  height: 50px;
-  width: 50%;
-  font-size: 20px;
-  font-weight:600;
+.searchBar input {
+  height: 35px;
+  width: 30%;
+  border-radius: 10px;
 }
 
-.searchBox button {
-  height: 50px;
-  width: 10%;
-  font-size: 20px;
-  font-weight: 700;
-} */
+.searchBar input::placeholder {
+  text-align: center;
+  font-size:25px;
+}
