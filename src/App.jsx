@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import MealInfo from "./components/MealInfo";
 import MealMenu from "./components/MealMenu";
+import MealInfo from "./components/MealInfo";
 import axios from "axios";
 
 function App() {
-  const [query, setQuery] = useState("apple");
+  const [query, setQuery] = useState("");
 
   const [result, setResult] = useState([]);
+
+  const [selectedMeal, setSelectedMeal] = useState(null);
 
   useEffect(() => {
     const searchMeal = async () => {
@@ -20,13 +22,18 @@ function App() {
         console.error("Error while fetching data: ", error);
       }
     };
-    console.log(result);
+    setSelectedMeal(null)
     searchMeal();
   }, [query]);
 
+  const handleMealClick = (meal) => {
+    console.log(meal);
+    setSelectedMeal(meal);
+  };
+
   return (
     <div>
-      <h1>Working</h1>
+      <h1>Meal Searcher</h1>
       <div>
         <input
           type="text"
@@ -35,7 +42,13 @@ function App() {
         />
         {/* <button onClick={searchMeal}>Search Meal</button> */}
       </div>
-      <MealInfo meals={result} />
+      <div>
+        {selectedMeal ? (
+          <MealInfo selectedMeal={selectedMeal} />
+        ) : (
+          <MealMenu meals={result} onMealClick={handleMealClick} />
+        )}
+      </div>
     </div>
   );
 }

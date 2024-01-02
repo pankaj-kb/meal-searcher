@@ -1,19 +1,20 @@
-// MealInfo.jsx
 import React from "react";
 
-const MealInfo = ({ meals }) => {
+const MealInfo = ({ selectedMeal }) => {
   return (
     <div>
-      {meals && meals.length > 0 ? (
-        meals.map((meal) => (
-          <div key={meal.idMeal}>
-            <h3>{meal.strMeal}</h3>
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            {/* Display additional meal information here if needed */}
-          </div>
-        ))
+      {selectedMeal ? (
+        <div>
+          <h3>{selectedMeal.strMeal}</h3>
+          <img src={selectedMeal.strMealThumb} alt={selectedMeal.strMeal} />
+          <p>
+            Ingredients: {selectedMeal.strIngredient1},{" "}
+            {selectedMeal.strIngredient2}
+          </p>
+          <p>Instructions: {selectedMeal.strInstructions}</p>
+        </div>
       ) : (
-        <p>No meals found</p>
+        <p>No meal selected</p>
       )}
     </div>
   );
