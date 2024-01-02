@@ -55,15 +55,21 @@ nav img {
   flex-wrap: wrap;
   /* justify-content: space-between; */
   /* align-items: center; */
+  /* margin-left: 15%; */
 }
 
 .mealTile {
-  flex: 0 0 33%;
-  justify-content: center;
-  align-items: center;
+  display: flex;
   flex-direction: column;
+  flex: 0 0 calc(33.333% - 0px);
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 20px;
+  border: 2px solid red;
 }
 
 .mealTile img {
-  height: 300px;
+  max-width: 30%;
+  height: auto;
+  margin-bottom: 5px;
 }
