@@ -19,8 +19,16 @@ nav{
   margin-bottom: 20px;
 }
 
+nav h1:hover {
+  cursor: pointer;
+}
+
 nav img {
   height: 100px;
+}
+
+nav img:hover{
+  cursor: pointer;
 }
 
 .searchBar {

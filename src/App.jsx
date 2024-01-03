@@ -4,6 +4,7 @@ import MealMenu from "./components/MealMenu";
 import MealInfo from "./components/MealInfo";
 import Bookmarks from "./components/Bookmarks";
 import axios from "axios";
+import { useBookmarkContext } from "./components/BookmarkContext";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -12,9 +13,9 @@ function App() {
 
   const [selectedMeal, setSelectedMeal] = useState(null);
 
-  const [bookmarks, setBookmarks] = useState([]);
-
   const [bookmarkMenuClick, setBookmarkMenuClick] = useState(false);
+
+  const { bookmarks, addBookmark, removeBookmark } = useBookmarkContext();
 
   useEffect(() => {
     const searchMeal = async () => {
@@ -28,14 +29,9 @@ function App() {
       }
     };
 
-    const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-    if (storedBookmarks) {
-      setBookmarks(storedBookmarks);
-    }
-
     setSelectedMeal(null);
-    searchMeal();
     setBookmarkMenuClick(false);
+    searchMeal();
   }, [query]);
 
   // approach with buttton click
@@ -60,29 +56,12 @@ function App() {
     window.location.reload();
   };
 
-  const handleBookmark = (meal) => {
-    const isMealExist = bookmarks.some(
-      (bookmark) => bookmark.idMeal === meal.idMeal
-    );
-    if (isMealExist) {
-      const newBookmarks = bookmarks.filter(
-        (bookmark) => bookmark.idMeal !== meal.idMeal
-      );
-      setBookmarks(newBookmarks);
-      localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
-    } else {
-      const newBookmarks = [...bookmarks, meal];
-      setBookmarks(newBookmarks);
-      localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
-    }
-  };
-
   // TODO: style the app.
   return (
     <div>
-      <nav onClick={handleRefresh}>
-        <img src="/mealLogo.png" alt="logo" />
-        <h1>Meal Searcher</h1>
+      <nav>
+        <img src="/mealLogo.png" alt="logo" onClick={handleRefresh} />
+        <h1 onClick={handleRefresh}>Meal Searcher</h1>
       </nav>
       <div className="searchBar">
         <input
@@ -108,23 +87,18 @@ function App() {
             <button onClick={() => setBookmarkMenuClick(false)}>
               Close Bookmarks
             </button>
-            <Bookmarks meals={bookmarks} onMealClick={handleMealClick} onHandleBookmark={handleBookmark} />
+            <Bookmarks meals={bookmarks} onMealClick={handleMealClick} />
           </div>
         ) : (
           <div>
             {selectedMeal ? (
               <div>
                 <button onClick={() => setSelectedMeal(null)}>Close</button>
-                <button onClick={() => handleBookmark(selectedMeal)}>Bookmark</button>
-                <MealInfo selectedMeal={selectedMeal} onHandleBookmark={handleBookmark} />
+                <MealInfo selectedMeal={selectedMeal} />
               </div>
             ) : (
               <div>
-                <MealMenu
-                  meals={result}
-                  onMealClick={handleMealClick}
-                  onHandleBookmark={handleBookmark}
-                />
+                <MealMenu meals={result} onMealClick={handleMealClick} />
               </div>
             )}
           </div>

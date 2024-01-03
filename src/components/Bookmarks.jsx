@@ -1,4 +1,7 @@
+import { useBookmarkContext } from "./BookmarkContext";
+
 const Bookmarks = ({ meals, onMealClick, onHandleBookmark }) => {
+  const { bookmarks, addBookmark, removeBookmark } = useBookmarkContext();
   return (
     <div className="mealGallary">
       {meals && meals.length > 0 ? (

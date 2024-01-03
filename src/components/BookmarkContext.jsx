@@ -8,7 +8,7 @@ export const BookmarkProvider = ({ children }) => {
   useEffect(() => {
     const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
     setBookmarks(storedBookmarks);
-  }, [bookmarks]);
+  }, []);
 
   const addBookmark = (meal) => {
     setBookmarks((prevBookmarks) => {
@@ -28,9 +28,13 @@ export const BookmarkProvider = ({ children }) => {
     });
   };
 
+  const bookmarkExist = (meal) => {
+    return bookmarks.some((bookmark) => bookmark.idMeal === meal.idMeal);
+  };
+
   return (
     <BookmarkContext.Provider
-      value={{ bookmarks, addBookmark, removeBookmark }}
+      value={{ bookmarks, addBookmark, removeBookmark, bookmarkExist }}
     >
       {children}
     </BookmarkContext.Provider>
