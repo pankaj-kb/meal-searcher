@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import MealMenu from "./components/MealMenu";
 import MealInfo from "./components/MealInfo";
+import Bookmarks from "./components/Bookmarks";
 import axios from "axios";
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
   const [selectedMeal, setSelectedMeal] = useState(null);
 
   const [bookmarks, setBookmarks] = useState([]);
+
+  const [bookmarkMenuClick, setBookmarkMenuClick] = useState(false);
 
   useEffect(() => {
     const searchMeal = async () => {
@@ -25,13 +28,14 @@ function App() {
       }
     };
 
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
     if (storedBookmarks) {
       setBookmarks(storedBookmarks);
     }
 
     setSelectedMeal(null);
     searchMeal();
+    setBookmarkMenuClick(false)
   }, [query]);
 
   // approach with buttton click
@@ -60,7 +64,7 @@ function App() {
     console.log(meal);
     const newBookmarks = [...bookmarks, meal];
     setBookmarks(newBookmarks);
-    localStorage.setItem('bookmarks', JSON.stringify(newBookmarks));
+    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
   };
 
   // TODO: style the app.
@@ -78,23 +82,35 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         />
         {/* <button onClick={searchMeal}>Search Meal</button> */}
+        <button className="bookMarks" onClick={() => setBookmarkMenuClick(true)}>
+          Bookmarks
+        </button>
       </div>
 
-      {/* section for Meal menu */}
+      {/* bookmarks */}
 
       <div>
-        {selectedMeal ? (
+        {bookmarkMenuClick ? (
           <div>
-            <button onClick={() => setSelectedMeal(null)}>Close</button>
-            <MealInfo selectedMeal={selectedMeal} />
+            <button onClick={() => setBookmarkMenuClick(false)}>Close Bookmarks</button>
+            <Bookmarks meals={bookmarks} onMealClick={handleMealClick} />
           </div>
         ) : (
           <div>
-            <MealMenu
-              meals={result}
-              onMealClick={handleMealClick}
-              onHandleBookmark={handleBookmark}
-            />
+            {selectedMeal ? (
+              <div>
+                <button onClick={() => setSelectedMeal(null)}>Close</button>
+                <MealInfo selectedMeal={selectedMeal} />
+              </div>
+            ) : (
+              <div>
+                <MealMenu
+                  meals={result}
+                  onMealClick={handleMealClick}
+                  onHandleBookmark={handleBookmark}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>

@@ -49,6 +49,20 @@ nav img {
   font-weight: 500;
 }
 
+.bookMarks {
+  height: 30px;
+  width: 100px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.bookMarks:hover {
+  cursor: grab;
+}
+
 .mealGallary {
   display: flex;
   /* flex-wrap:wrap; */
