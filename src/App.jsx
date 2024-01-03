@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MealMenu from "./components/MealMenu";
-import MealInfo from "./components/MealInfo"
+import MealInfo from "./components/MealInfo";
 import axios from "axios";
 
 function App() {
@@ -24,6 +24,12 @@ function App() {
         console.error("Error while fetching data: ", error);
       }
     };
+
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    if (storedBookmarks) {
+      setBookmarks(storedBookmarks);
+    }
+
     setSelectedMeal(null);
     searchMeal();
   }, [query]);
@@ -51,9 +57,11 @@ function App() {
   };
 
   const handleBookmark = (meal) => {
-    console.log(meal)
+    console.log(meal);
+    const newBookmarks = [...bookmarks, meal];
+    setBookmarks(newBookmarks);
+    localStorage.setItem('bookmarks', JSON.stringify(newBookmarks));
   };
-
 
   // TODO: style the app.
   return (
@@ -82,7 +90,11 @@ function App() {
           </div>
         ) : (
           <div>
-            <MealMenu meals={result} onMealClick={handleMealClick} />
+            <MealMenu
+              meals={result}
+              onMealClick={handleMealClick}
+              onHandleBookmark={handleBookmark}
+            />
           </div>
         )}
       </div>

@@ -73,3 +73,13 @@ nav img {
   height: auto;
   margin-bottom: 5px;
 }
+
+.mealGallary button {
+  height: 20px;
+  width: 100px;
+  font-weight: 800;
+}
+
+.mealGallary button:hover {
+  cursor:grab;
+}

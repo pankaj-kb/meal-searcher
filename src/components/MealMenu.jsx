@@ -1,6 +1,6 @@
 import React from "react";
 
-const MealMenu = ({ meals, onMealClick }) => {
+const MealMenu = ({ meals, onMealClick, onHandleBookmark }) => {
   // const sliceMeals = meals.slice(0, 9);
   return (
     <div className="mealGallary">
@@ -9,7 +9,7 @@ const MealMenu = ({ meals, onMealClick }) => {
           <div className="mealTile" key={meal.idMeal}>
             <img onClick={() => onMealClick(meal)} src={meal.strMealThumb} alt={meal.strMeal} />
             <h3>{meal.strMeal}</h3>
-            <button>Bookmark</button>
+            <button onClick={() => onHandleBookmark(meal)}>Bookmark</button>
           </div>
         ))
       ) : (
