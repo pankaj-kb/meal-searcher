@@ -1,4 +1,4 @@
-const Bookmarks = ({meals, onMealClick}) => {
+const Bookmarks = ({meals, onMealClick, onHandleBookmark}) => {
   return (
     <div className="mealGallary">
       {meals && meals.length > 0 ? (
@@ -10,7 +10,7 @@ const Bookmarks = ({meals, onMealClick}) => {
               alt={meal.strMeal}
             />
             <h3>{meal.strMeal}</h3>
-            {/* <button onClick={() => onHandleBookmark(meal)}>Bookmark</button> */}
+            <button onClick={() => onHandleBookmark(meal)}>Remove</button>
           </div>
         ))
       ) : (

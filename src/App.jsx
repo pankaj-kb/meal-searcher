@@ -35,7 +35,7 @@ function App() {
 
     setSelectedMeal(null);
     searchMeal();
-    setBookmarkMenuClick(false)
+    setBookmarkMenuClick(false);
   }, [query]);
 
   // approach with buttton click
@@ -61,10 +61,20 @@ function App() {
   };
 
   const handleBookmark = (meal) => {
-    console.log(meal);
-    const newBookmarks = [...bookmarks, meal];
-    setBookmarks(newBookmarks);
-    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
+    const isMealExist = bookmarks.some(
+      (bookmark) => bookmark.idMeal === meal.idMeal
+    );
+    if (isMealExist) {
+      const newBookmarks = bookmarks.filter(
+        (bookmark) => bookmark.idMeal !== meal.idMeal
+      );
+      setBookmarks(newBookmarks);
+      localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
+    } else {
+      const newBookmarks = [...bookmarks, meal];
+      setBookmarks(newBookmarks);
+      localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
+    }
   };
 
   // TODO: style the app.
@@ -82,7 +92,10 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         />
         {/* <button onClick={searchMeal}>Search Meal</button> */}
-        <button className="bookMarks" onClick={() => setBookmarkMenuClick(true)}>
+        <button
+          className="bookMarks"
+          onClick={() => setBookmarkMenuClick(true)}
+        >
           Bookmarks
         </button>
       </div>
@@ -92,8 +105,10 @@ function App() {
       <div>
         {bookmarkMenuClick ? (
           <div>
-            <button onClick={() => setBookmarkMenuClick(false)}>Close Bookmarks</button>
-            <Bookmarks meals={bookmarks} onMealClick={handleMealClick} />
+            <button onClick={() => setBookmarkMenuClick(false)}>
+              Close Bookmarks
+            </button>
+            <Bookmarks meals={bookmarks} onMealClick={handleMealClick} onHandleBookmark={handleBookmark} />
           </div>
         ) : (
           <div>
