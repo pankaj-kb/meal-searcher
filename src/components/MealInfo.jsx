@@ -2,7 +2,7 @@ import React from "react";
 import { useBookmarkContext } from "./BookmarkContext";
 
 const MealInfo = ({ selectedMeal }) => {
-  const { bookmarks, addBookmark, removeBookmark, bookmarkExist } = useBookmarkContext();
+  const { addBookmark, removeBookmark, bookmarkExist } = useBookmarkContext();
   return (
     <div>
       <h3>{selectedMeal.strMeal}</h3>

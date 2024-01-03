@@ -1,11 +1,11 @@
 import { useBookmarkContext } from "./BookmarkContext";
 
-const Bookmarks = ({ meals, onMealClick, onHandleBookmark }) => {
-  const { bookmarks, addBookmark, removeBookmark } = useBookmarkContext();
+const Bookmarks = ({ onMealClick }) => {
+  const { bookmarks, removeBookmark } = useBookmarkContext();
   return (
     <div className="mealGallary">
-      {meals && meals.length > 0 ? (
-        meals.map((meal) => (
+      {bookmarks && bookmarks.length > 0 ? (
+        bookmarks.map((meal) => (
           <div className="mealTile" key={meal.idMeal}>
             <img
               src={meal.strMealThumb}
@@ -20,7 +20,7 @@ const Bookmarks = ({ meals, onMealClick, onHandleBookmark }) => {
                   `Are you sure you want to remove ${meal.strMeal} from bookmarks?`
                 );
                 if (confirmRemoval) {
-                  onHandleBookmark(meal);
+                  removeBookmark(meal);
                 }
               }}
             >

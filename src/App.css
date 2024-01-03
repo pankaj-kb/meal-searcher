@@ -10,6 +10,11 @@ body {
   font-family: 'Roboto Slab', serif;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+
 nav{
   display: flex;
   justify-content: center;

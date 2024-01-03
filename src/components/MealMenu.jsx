@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useBookmarkContext } from "./BookmarkContext";
 
 const MealMenu = ({ meals, onMealClick }) => {
-  const { bookmarks, addBookmark, removeBookmark, bookmarkExist } =
+  const { addBookmark, removeBookmark, bookmarkExist } =
     useBookmarkContext();
 
   // const checkExist = (meal) => console.log(bookmarkExist(meal));

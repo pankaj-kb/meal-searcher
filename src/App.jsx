@@ -15,7 +15,11 @@ function App() {
 
   const [bookmarkMenuClick, setBookmarkMenuClick] = useState(false);
 
-  const { bookmarks, addBookmark, removeBookmark } = useBookmarkContext();
+  const { bookmarks } = useBookmarkContext();
+
+  const bookmarkCount = bookmarks.length;
+  
+  console.log(bookmarkCount)
 
   useEffect(() => {
     const searchMeal = async () => {
@@ -75,7 +79,7 @@ function App() {
           className="bookMarks"
           onClick={() => setBookmarkMenuClick(true)}
         >
-          Bookmarks
+          Bookmarks {bookmarkCount}
         </button>
       </div>
 
