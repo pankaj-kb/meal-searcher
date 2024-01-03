@@ -115,7 +115,8 @@ function App() {
             {selectedMeal ? (
               <div>
                 <button onClick={() => setSelectedMeal(null)}>Close</button>
-                <MealInfo selectedMeal={selectedMeal} />
+                <button onClick={() => handleBookmark(selectedMeal)}>Bookmark</button>
+                <MealInfo selectedMeal={selectedMeal} onHandleBookmark={handleBookmark} />
               </div>
             ) : (
               <div>
