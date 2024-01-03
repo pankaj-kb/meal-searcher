@@ -11,6 +11,8 @@ function App() {
 
   const [selectedMeal, setSelectedMeal] = useState(null);
 
+  const [bookmarks, setBookmarks] = useState([]);
+
   useEffect(() => {
     const searchMeal = async () => {
       try {
@@ -46,6 +48,10 @@ function App() {
 
   const handleRefresh = () => {
     window.location.reload();
+  };
+
+  const handleBookmark = (meal) => {
+    console.log(meal)
   };
 
 

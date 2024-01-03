@@ -5,10 +5,11 @@ const MealMenu = ({ meals, onMealClick }) => {
   return (
     <div className="mealGallary">
       {meals && meals.length > 0 ? (
-        meals.slice(0, 9).map((meal) => (
-          <div className="mealTile" key={meal.idMeal} onClick={() => onMealClick(meal)}>
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
+        meals.slice(0, 15).map((meal) => (
+          <div className="mealTile" key={meal.idMeal}>
+            <img onClick={() => onMealClick(meal)} src={meal.strMealThumb} alt={meal.strMeal} />
             <h3>{meal.strMeal}</h3>
+            <button>Bookmark</button>
           </div>
         ))
       ) : (
