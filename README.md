@@ -28,7 +28,7 @@ Meal Searcher is a React-based web application that allows users to search for m
 
 ## Live Link
 
-# The app is deployed on Netlify and can be accessed [here](#https://meal-sercher.netlify.app/).
+# The app is deployed on Netlify and can be accessed [here](https://meal-sercher.netlify.app/).
 
 ## Local Development
 
