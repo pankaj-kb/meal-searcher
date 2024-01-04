@@ -22,13 +22,13 @@ const MealMenu = ({ meals, onMealClick }) => {
             />
             <h3>{meal.strMeal}</h3>
             {bookmarkExist(meal) ? (
-              <button onClick={() => removeBookmark(meal)}>
+              <div className="bookmark-button" onClick={() => removeBookmark(meal)}>
                 <FaBookmark />
-              </button>
+              </div>
             ) : (
-              <button onClick={() => addBookmark(meal)}>
+              <div className="bookmark-button" onClick={() => addBookmark(meal)}>
                 <FaRegBookmark />
-              </button>
+              </div>
             )}
           </div>
         ))

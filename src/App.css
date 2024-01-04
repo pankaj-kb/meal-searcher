@@ -63,13 +63,23 @@ nav img:hover{
 }
 
 .bookMarks {
-  height: 30px;
-  width: 100px;
   background-color: white;
-  font-size: 18px;
-  font-weight: 600;
-  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   border-radius: 10px;
+  height: 30px;
+  width: 50px;
+  margin-left: 20px;
+}
+
+.bookmark-icon {
+  color: black;
+}
+
+.bookMarks p {
+  color: black;
 }
 
 .bookMarks:hover {
@@ -92,7 +102,9 @@ nav img:hover{
   /* justify-content: center; */
   align-items: center;
   margin-bottom: 20px;
-  border: 2px solid red;
+  border: 2px solid white;
+  border-radius: 20px;
+  gap: 10px;
 }
 
 .mealTile img {
@@ -101,12 +113,17 @@ nav img:hover{
   margin-bottom: 5px;
 }
 
-.mealGallary button {
-  height: 20px;
-  width: 100px;
-  font-weight: 800;
+.mealGallary .bookmark-button {
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10px; */
+  /* border-radius: 10px; */
+  height: 30px;
+  width: 50px;
 }
 
-.mealGallary button:hover {
-  cursor:grab;
+.mealGallary .bookmark-button:hover {
+  cursor:pointer;
 }
