@@ -5,6 +5,8 @@ import MealInfo from "./components/MealInfo";
 import Bookmarks from "./components/Bookmarks";
 import axios from "axios";
 import { useBookmarkContext } from "./components/BookmarkContext";
+import { FaBookmark } from "react-icons/fa";
+import { IoMdCloseCircle } from "react-icons/io";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -18,8 +20,8 @@ function App() {
   const { bookmarks } = useBookmarkContext();
 
   const bookmarkCount = bookmarks.length;
-  
-  console.log(bookmarkCount)
+
+  console.log(bookmarkCount);
 
   useEffect(() => {
     const searchMeal = async () => {
@@ -79,7 +81,7 @@ function App() {
           className="bookMarks"
           onClick={() => setBookmarkMenuClick(true)}
         >
-          Bookmarks {bookmarkCount}
+          <FaBookmark /> {bookmarkCount}
         </button>
       </div>
 
@@ -89,7 +91,7 @@ function App() {
         {bookmarkMenuClick ? (
           <div>
             <button onClick={() => setBookmarkMenuClick(false)}>
-              Close Bookmarks
+              <IoMdCloseCircle />
             </button>
             <Bookmarks meals={bookmarks} onMealClick={handleMealClick} />
           </div>
@@ -97,7 +99,9 @@ function App() {
           <div>
             {selectedMeal ? (
               <div>
-                <button onClick={() => setSelectedMeal(null)}>Close</button>
+                <button onClick={() => setSelectedMeal(null)}>
+                  <IoMdCloseCircle />
+                </button>
                 <MealInfo selectedMeal={selectedMeal} />
               </div>
             ) : (

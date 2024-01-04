@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useBookmarkContext } from "./BookmarkContext";
+import { FaRegBookmark } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
 
 const MealMenu = ({ meals, onMealClick }) => {
-  const { addBookmark, removeBookmark, bookmarkExist } =
-    useBookmarkContext();
+  const { addBookmark, removeBookmark, bookmarkExist } = useBookmarkContext();
 
   // const checkExist = (meal) => console.log(bookmarkExist(meal));
 
@@ -21,9 +22,13 @@ const MealMenu = ({ meals, onMealClick }) => {
             />
             <h3>{meal.strMeal}</h3>
             {bookmarkExist(meal) ? (
-              <button onClick={() => removeBookmark(meal)}>Remove</button>
+              <button onClick={() => removeBookmark(meal)}>
+                <FaBookmark />
+              </button>
             ) : (
-              <button onClick={() => addBookmark(meal)}>Bookmark</button>
+              <button onClick={() => addBookmark(meal)}>
+                <FaRegBookmark />
+              </button>
             )}
           </div>
         ))
