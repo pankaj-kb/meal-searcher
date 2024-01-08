@@ -87,18 +87,21 @@ function App() {
       <div>
         {bookmarkMenuClick ? (
           <div>
-            <button onClick={() => setBookmarkMenuClick(false)}>
-              <IoMdCloseCircle />
-            </button>
+            <IoMdCloseCircle
+              className="close-button"
+              onClick={() => setBookmarkMenuClick(false)}
+            />
             <Bookmarks meals={bookmarks} onMealClick={handleMealClick} />
           </div>
         ) : (
           <div>
             {selectedMeal ? (
               <div>
-                <button onClick={() => setSelectedMeal(null)}>
-                  <IoMdCloseCircle />
-                </button>
+                <IoMdCloseCircle
+                  className="close-button"
+                  onClick={() => setSelectedMeal(null)}
+                />
+
                 <MealInfo selectedMeal={selectedMeal} />
               </div>
             ) : (

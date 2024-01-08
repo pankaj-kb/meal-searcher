@@ -1,5 +1,5 @@
 import { useBookmarkContext } from "./BookmarkContext";
-import { IoMdCloseCircle } from "react-icons/io";
+import { FaBookmark } from "react-icons/fa";
 
 const Bookmarks = ({ onMealClick }) => {
   const { bookmarks, removeBookmark } = useBookmarkContext();
@@ -14,19 +14,7 @@ const Bookmarks = ({ onMealClick }) => {
               onClick={() => onMealClick(meal)}
             />
             <h3>{meal.strMeal}</h3>
-            <button
-              key={`remove-${meal.idMeal}`}
-              onClick={() => {
-                const confirmRemoval = window.confirm(
-                  `Are you sure you want to remove ${meal.strMeal} from bookmarks?`
-                );
-                if (confirmRemoval) {
-                  removeBookmark(meal);
-                }
-              }}
-            >
-              Remove
-            </button>
+            <FaBookmark className=".bookmark-icon" onClick={() => {removeBookmark(meal)}} />
           </div>
         ))
       ) : (
