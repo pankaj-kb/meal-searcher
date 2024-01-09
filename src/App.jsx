@@ -77,7 +77,7 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         />
         {/* <button onClick={searchMeal}>Search Meal</button> */}
-        <div className="bookMarks" onClick={() => setBookmarkMenuClick(true)}>
+        <div title="bookmarks" className="bookMarks" onClick={() => setBookmarkMenuClick(true)}>
           <FaBookmark className="bookmark-icon" /> <p>{bookmarkCount}</p>
         </div>
       </div>

@@ -139,7 +139,7 @@ nav img:hover {
 }
 
 .close-button {
-  position: absolute;
+  position: relative;
   font-size: 30px;
   left: 20px;
   top: 25%;
@@ -147,4 +147,38 @@ nav img:hover {
 
 .close-button:hover {
   cursor: pointer;
+}
+
+.mealInfo-page {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.meal-upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* background-color: #555453; */
+  /* border-radius: 20px; */
+}
+
+.meal-upper h1 {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: #d48c46;
+  border-radius: 20px;
+  color: #070606;
+}
+
+.meal-upper img {
+  height: 300px;
+  width: auto;
+  border-radius: 50%;
 }
