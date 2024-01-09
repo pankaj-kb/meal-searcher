@@ -182,3 +182,32 @@ nav img:hover {
   width: auto;
   border-radius: 50%;
 }
+
+.meal-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 20px;
+  text-align: center;
+  overflow: hidden;
+  margin-right: 30px;
+}
+
+.ingredients {
+  background-color: #d48c46;
+  color: #070606;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.instructions {
+  background-color: #d48c46;
+  color: #070606;
+  font-size: 18px;
+  font-weight: 600;
+  word-wrap: break-word;
+  border-radius: 20px;
+}

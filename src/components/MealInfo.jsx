@@ -10,11 +10,27 @@ const MealInfo = ({ selectedMeal }) => {
         <h1>{selectedMeal.strMeal}</h1>
       </div>
       <div className="meal-description">
-      <p>
-        Ingredients: {selectedMeal.strIngredient1},{" "}
-        {selectedMeal.strIngredient2}
-      </p>
-      <p>Instructions: {selectedMeal.strInstructions}</p>
+        <p className="ingredients">
+          Ingredients:
+          {Object.keys(selectedMeal)
+            .filter(
+              (key) => key.startsWith("strIngredient") && selectedMeal[key]
+            )
+            .map((key, index) => (
+              <span key={index}>
+                {selectedMeal[key]}
+                {index <
+                Object.keys(selectedMeal).filter(
+                  (key) => key.startsWith("strIngredient") && selectedMeal[key]
+                ).length -
+                  1
+                  ? ", "
+                  : ""}
+              </span>
+            ))}
+        </p>
+
+        <p className="instructions">Instructions: {selectedMeal.strInstructions}</p>
       </div>
     </div>
   );
